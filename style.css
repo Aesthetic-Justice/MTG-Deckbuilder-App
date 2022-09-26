@@ -38,10 +38,9 @@ color: gold;
 }
 
 header {
-    display: flexbox;
+    /* display: flexbox; */
     height: 20vh;
     width: 100vw;
-    background-color: black;
     /* display: flex; */
     /* flex-wrap: wrap;
     align-items: baseline;
