@@ -17,20 +17,28 @@
 
 <body>
     <header class="topbar navbar-dark bg-dark">
-        <nav class="topbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class ="navbar-brand text-bg-dark" href="#">CARDMAGIC</a>
-                <ul>
-                    <li class='nav-item'>
-                        <a class='nav-link text-bg-dark' href="#">Cards</a>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link text-bg-dark' href="#">Strategy</a>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link text-bg-dark' href="#">Videos</a>
-                    </li>
-                </ul>
+        <nav class="nav navbar-dark bg-dark ">
+            <div class="container-fluid row align-items-end">
+                <div class="col-lg-6">
+                    <a class="navbar-brand text-bg-dark fs-1 fw-bold" href="#">CARDMAGIC</a>
+                </div>
+                <div class="col-lg-6">
+                    <ul class = 'nav justify-content-end '>
+                        <li class='nav-item'>
+                            <a class='nav-link text-bg-dark ' href="#">Cards</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link text-bg-dark' href="#">Strategy</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link text-bg-dark' href="#">Videos</a>
+                        </li>
+                        <form class="d-flex" role="search">
+                            <input id="search" class="form-control me-2" type="search" placeholder="Search Cards" aria-label="Search">
+                            <button id="searchBtn"class="btn btn-warning" type="submit">Search</button>
+                    </ul>
+                    
+                </div>
             </div>
         </nav>
     </header>

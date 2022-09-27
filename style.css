@@ -39,7 +39,7 @@ color: gold;
 
 header {
     /* display: flexbox; */
-    height: 20vh;
+    height: 10vh;
     width: 100vw;
     /* display: flex; */
     /* flex-wrap: wrap;
@@ -47,7 +47,25 @@ header {
     justify-content: center;
     list-style: none; */
 }
-nav ul {
-    list-style-type: none;
-    display: inline-block;
+.nav-item {
+    position: relative;
+    top: 3vh;
+}
+
+.navbar-brand {
+    position:relative;
+    top: 1vh;
+}
+#search{
+    position: relative;
+    top: 4vh;
+    height: 4vh;
+}
+#searchBtn{
+    position: relative;
+    top: 4vh;
+    height: 4vh;
+    font-size: .8em;
+    line-height: 0em;
+
 }
