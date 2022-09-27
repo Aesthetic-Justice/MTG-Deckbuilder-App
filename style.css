@@ -69,3 +69,7 @@ header {
     line-height: 0em;
 
 }
+
+#cardImage{
+    border-radius: 25px;
+}
