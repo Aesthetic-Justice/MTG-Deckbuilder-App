@@ -1,0 +1,71 @@
+main {
+    margin-left:5rem;
+    padding: 1rem;
+}
+
+body {
+    background-color:gray ;
+}
+
+body::-webkit-scrollbar {
+    width: 0.15rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: black;
+} 
+
+body::-webkit-scrollbar-thumb {
+    background: gold;
+}
+
+.navbar {
+    width: 5rem;
+    height:100vh;
+    position: fixed;
+    background-color: rgba(26, 26, 26, 0.906);
+    margin-right: 5em;
+    display: flexbox;
+    align-content: flex-start;
+    justify-content: center;
+}
+.nav-icon {
+color: gold;
+}
+
+#deck {
+    color: whitesmoke;
+}
+
+header {
+    /* display: flexbox; */
+    height: 10vh;
+    width: 100vw;
+    /* display: flex; */
+    /* flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    list-style: none; */
+}
+.nav-item {
+    position: relative;
+    top: 3vh;
+}
+
+.navbar-brand {
+    position:relative;
+    top: 1vh;
+}
+#search{
+    position: relative;
+    top: 4vh;
+    height: 4vh;
+}
+#searchBtn{
+    position: relative;
+    top: 4vh;
+    height: 4vh;
+    font-size: .8em;
+    line-height: 0em;
+
+}
