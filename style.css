@@ -1,10 +1,10 @@
 main {
-    margin-left:5rem;
+    margin-left: 5rem;
     padding: 1rem;
 }
 
 body {
-    background-color:gray ;
+    background-color: gray;
 }
 
 body::-webkit-scrollbar {
@@ -13,59 +13,103 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-track {
     background: black;
-} 
+}
 
 body::-webkit-scrollbar-thumb {
     background: gold;
 }
 
+#deck {
+    color: rgb(206, 11, 11);
+    width: 100%;
+}
+
+/* side nav bar  */
 .navbar {
     width: 5rem;
-    height:100vh;
+    height: 100vh;
     position: fixed;
     background-color: rgba(26, 26, 26, 0.906);
-    margin-right: 5em;
-    display: flexbox;
-    align-content: flex-start;
-    justify-content: center;
-}
-.nav-icon {
-color: gold;
+    transition: 200ms ease;
+    
 }
 
-#deck {
-    color: whitesmoke;
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
+
+#nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: rgba(26, 26, 26, 0.906);
+    text-decoration: none;
+    filter: grayscale(100%)opacity(0.7);
+    transition: 600ms;
+}
+
+.link-text {
+    display: none;
+    margin-left: 1rem;
+}
+
+.nav-link svg {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+/* hover for the navbar, width determines the how far it will cover page */
+.navbar:hover {
+    width: 20rem;
+}
+
+.navbar:hover .link-text {
+    display: block;
+}
+/* removes previous grayscale of the nav bar icon */
+#nav-link:hover {
+    filter: grayscale(0%) opacity(1);
+}
+
 
 header {
-    /* display: flexbox; */
-    height: 10vh;
+    height: 5rem;
     width: 100vw;
-    /* display: flex; */
-    /* flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: center;
-    list-style: none; */
-}
-.nav-item {
-    position: relative;
-    top: 3vh;
 }
 
-.navbar-brand {
-    position:relative;
-    top: 1vh;
-}
-#search{
+.nav-item,#search,#searchBtn {
     position: relative;
-    top: 4vh;
+    top: 5vh;
     height: 4vh;
 }
-#searchBtn{
-    position: relative;
-    top: 4vh;
+
+
+#search {
+    height: 4vh;
+}
+
+#searchBtn {
+
     height: 4vh;
     font-size: .8em;
     line-height: 0em;
 
 }
+.gsc-control-cse{
+position: relative;
+top: 8vh;
+border-radius: 2em;
+color: red ;
+}
+
+
+.nav-item, 
+
+@media only screen and (max-width:600px) {}
+
+@media only screen and (min-width:600px) {}
