@@ -100,11 +100,19 @@ header {
     line-height: 0em;
 
 }
+
+#googleHeader {
+position: relative;
+
+
+}
+
 .gsc-control-cse{
 position: relative;
 top: 8vh;
 border-radius: 2em;
 color: red ;
+margin-left: 15rem;
 }
 
 
