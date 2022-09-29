@@ -84,37 +84,36 @@ header {
 
 .nav-item,#search,#searchBtn {
     position: relative;
-    top: 5vh;
-    height: 4vh;
+    top: 38px;
+    height: 10px;
 }
 
 
-#search {
-    height: 4vh;
+#search,#searchBtn {
+    height: 40px;
 }
 
 #searchBtn {
-
-    height: 4vh;
     font-size: .8em;
     line-height: 0em;
 
 }
 
-#googleHeader {
-position: relative;
-
-
-}
 
 .gsc-control-cse{
 position: relative;
-top: 8vh;
+top: 130px;
 border-radius: 2em;
-color: red ;
 margin-left: 15rem;
 }
 
+#googleHeader{
+    position: absolute;
+    top: 130px;
+    margin-left: 15rem;
+    display: inline;
+    width: 50vw;
+}
 
 .nav-item, 
 
