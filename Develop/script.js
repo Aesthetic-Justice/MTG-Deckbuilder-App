@@ -32,27 +32,31 @@ function displayCard(uri) {
         })
 }
 
+//Takes a list of cardObjects from the included JSON(or API) and creates a grid
 function createGrid(list) {
-    let i2 = 0;
-    let rowEl = document.createElement('div');
+    while(elSearchGrid.childNodes.length>0){
+        elSearchGrid.removeChild(elSearchGrid.firstChild);
+    }
+    let i2 = 0;//Variable used for grid width
+    let rowEl = document.createElement('div');//blank row element
     for (let i of list) {
-        if (i2 % 3==0){
+        //Seperates items into rows
+        if (i2 % 4==0){//i2%X, X=GridWith
             rowEl = document.createElement('div');
-            rowEl.classList.add(`row`);
+            rowEl.classList.add(`row`);//bootstrap row
             elSearchGrid.append(rowEl);
-            if(i2==21){
-                break;
-            }
+            //if(i2==Y){break;}//Y=MaxGridItems
         }
         let colEl = document.createElement('img');
-        if (i.image_uris.small) {
+        //Not every card image has a LowRez variant, so workaround
+        if (i.image_uris.include(`small`)) {
             colEl.src = i.image_uris.small;
         }
         else {
-            colEl.src = i.image_uris.art_crop;
+            colEl.src = i.image_uris.normal;
         }
-        colEl.dataset.uri = i.uri;
-        colEl.classList.add(`col-4`,`cardImage`);
+        colEl.dataset.uri = i.uri;//add a link to this cardObject's API link to the element
+        colEl.classList.add(`col`,`cardImage`);//bootstrap column
         rowEl.append(colEl);
         i2++;
     }
