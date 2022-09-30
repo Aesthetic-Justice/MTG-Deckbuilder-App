@@ -1,3 +1,4 @@
+
 main {
     margin-left: 5rem;
     padding: 1rem;
@@ -116,7 +117,8 @@ margin-left: 15rem;
 
 
 #searchGrid{
-  height: fit-content;
+
+  height: 50rem ;
   overflow-y: scroll;  
 }
 .nav-item, 
