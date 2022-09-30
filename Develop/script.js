@@ -5,7 +5,7 @@ let displayType = document.getElementById('cardType');
 let displayText = document.getElementById('cardText');
 let displayPT = document.getElementById('cardPT');
 let elSearchButton = document.getElementById('searchBtn');
-let elSearchGrid = $('#searchGrid');
+let elSearchGrid = document.getElementById('searchGrid');
 let arrCardNames = [];
 
 //~~~~ Functions ~~~~~~~~~~~
@@ -20,11 +20,10 @@ function getCardList() {
 
 function displayCard(uri) {
     fetch(uri)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(`hello world`);
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
             displayArt.src = data.image_uris.normal;
             displayName.textContent = data.name;
             displayType.textContent = data.type_line;
@@ -34,26 +33,28 @@ function displayCard(uri) {
 }
 
 function createGrid(list) {
-    let i2 = 2;
-    let rowEl = $('<div>');
+    let i2 = 0;
+    let rowEl = document.createElement('div');
     for (let i of list) {
-        if (i2 !== 2) { i2++ }
-        else {
-            i2 = 0;
-            rowEl = $('<div>');
-            rowEl.attr(`class`,`row`);
+        if (i2 % 3==0){
+            rowEl = document.createElement('div');
+            rowEl.classList.add(`row`);
             elSearchGrid.append(rowEl);
+            if(i2==9){
+                break;
+            }
         }
-        let colEl = $('<img>');
+        let colEl = document.createElement('img');
         if (i.image_uris.small) {
-            colEl.attr(`src`,i.image_uris.small);
+            colEl.src = i.image_uris.small;
         }
         else {
-            colEl.attr(`src`,i.image_uris.crop);
+            colEl.src = i.image_uris.art_crop;
         }
-        colEl.data("uri",i.uri);
-        colEl.attr(`class`,`col-4`);
+        colEl.dataset.uri = i.uri;
+        colEl.classList.add(`col-4`,`cardImage`);
         rowEl.append(colEl);
+        i2++;
     }
 }
 
@@ -68,7 +69,7 @@ elSearchButton.addEventListener('click', function (event) {
     createGrid(results);
 })
 
-elSearchGrid.on('click', '.col-4', function (event) {
+elSearchGrid.addEventListener('click', function (event) {
     if (event.target.dataset.uri != null) {
         displayCard(event.target.dataset.uri);
     }
