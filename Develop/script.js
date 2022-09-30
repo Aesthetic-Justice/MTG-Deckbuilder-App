@@ -33,7 +33,9 @@ function displayCard(uri) {
 
 //Takes a list of cardObjects from the included JSON(or API) and creates a grid
 function createGrid(list) {
-    elSearchButton.innerHTML="";//Wipes the search grid
+    while(elSearchGrid.childNodes.length>0){
+        elSearchGrid.removeChild(elSearchGrid.firstChild);
+    }
     let i2 = 0;//Variable used for grid width
     let rowEl = document.createElement('div');//blank row element
     for (let i of list) {
@@ -46,14 +48,14 @@ function createGrid(list) {
         }
         let colEl = document.createElement('img');
         //Not every card image has a LowRez variant, so workaround
-        if (i.image_uris.small) {
+        if (i.image_uris.include(`small`)) {
             colEl.src = i.image_uris.small;
         }
         else {
             colEl.src = i.image_uris.normal;
         }
         colEl.dataset.uri = i.uri;//add a link to this cardObject's API link to the element
-        colEl.classList.add(`col-3`,`cardImage`);//bootstrap column
+        colEl.classList.add(`col`,`cardImage`);//bootstrap column
         rowEl.append(colEl);
         i2++;
     }
@@ -63,13 +65,14 @@ function createGrid(list) {
 getCardList();
 
 //~~~~ Event Listeners ~~~~
+//on Clicking the search button in the top right
 elSearchButton.addEventListener('click', function (event) {
     event.preventDefault();//Prevent reload page
-    let searchTarget = document.getElementById('search').value;//Grab search input
+    let searchTarget = document.getElementById('search').value.toLowerCase();//Grab search input
     let results=[];//create empty array, to be filled with cardObjects
     
     //This bundle of code does a server-side AutoComplete
-     fetch(`https://api.scryfall.com/cards/autocomplete?q=`+searchTarget)
+/*      fetch(`https://api.scryfall.com/cards/autocomplete?q=`+searchTarget)
     .then(function(response){
         return response.json();
     })
@@ -80,12 +83,13 @@ elSearchButton.addEventListener('click', function (event) {
             }
         }
         displayCard(results);//then call createGrid to fill the search Grid with the resulting cardObjects
-    })
+    }) */
 
-
-    
+    results = arrCardNames.filter(c => c.name?.toLowerCase().includes(searchTarget));//compares the value of the search input against the arr of cardNames and returns matches
+    createGrid(results);//creates a grid of images based on the search results
 })
 
+//on clicking any card art in the search grid
 elSearchGrid.addEventListener('click', function (event) {
     if (event.target.dataset.uri != null) {
         displayCard(event.target.dataset.uri);
