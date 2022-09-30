@@ -115,12 +115,30 @@ margin-left: 15rem;
     width: 50vw;
 }
 
+a #title{
+    color: rgb(206, 11, 11);
+    transition: 600ms ease;
+}
 
 #searchGrid{
 
-  height: 50rem ;
+  height: 50rem;
   overflow-y: scroll;  
+  
 }
+
+#searchGrid::-webkit-scrollbar {
+    width: 0.15rem;
+}
+
+#searchGrid::-webkit-scrollbar-track {
+    background: black;
+}
+
+#searchGrid::-webkit-scrollbar-thumb {
+    background: gold;
+}
+
 .nav-item, 
 
 @media only screen and (max-width:600px) {}

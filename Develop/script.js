@@ -40,7 +40,7 @@ function createGrid(list) {
             rowEl = document.createElement('div');
             rowEl.classList.add(`row`);
             elSearchGrid.append(rowEl);
-            if(i2==9){
+            if(i2==21){
                 break;
             }
         }
