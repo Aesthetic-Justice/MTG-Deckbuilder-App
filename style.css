@@ -121,8 +121,8 @@ a #title{
 }
 
 #searchGrid{
-
-
+  background-color: black;  
+  border: .2rem solid black;
   height: 50rem;
   overflow-y: scroll;  
   
@@ -145,4 +145,14 @@ a #title{
 @media only screen and (min-width:600px) {}
 .cardImage{
     border-radius: 25px;
+    background-color: black;
+    margin-top: 20px;
+    
+}
+
+#cardContainer{
+   border: 5px solid black;
+   font-size: 20px;
+   font-weight: 900;
+    
 }

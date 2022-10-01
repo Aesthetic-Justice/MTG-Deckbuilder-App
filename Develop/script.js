@@ -40,23 +40,22 @@ function createGrid(list) {
     let i2 = 0;//Variable used for grid width
     let rowEl = document.createElement('div');//blank row element
     for (let i of list) {
+        console.log(i);
+        if (!(`image_uris` in i)){
+            continue;
+        }
         //Seperates items into rows
         if (i2 % 4==0){//i2%X, X=GridWith
             rowEl = document.createElement('div');
             rowEl.classList.add(`row`);//bootstrap row
             elSearchGrid.append(rowEl);
-            //if(i2==Y){break;}//Y=MaxGridItems
+            if(i2==20){break;}//Y=MaxGridItems
         }
         let colEl = document.createElement('img');
         //Not every card image has a LowRez variant, so workaround
-        if (i.image_uris.include(`small`)) {
-            colEl.src = i.image_uris.small;
-        }
-        else {
-            colEl.src = i.image_uris.normal;
-        }
+        colEl.src = i.image_uris.small;
         colEl.dataset.uri = i.uri;//add a link to this cardObject's API link to the element
-        colEl.classList.add(`col`,`cardImage`);//bootstrap column
+        colEl.classList.add(`col-6`,`cardImage`);//bootstrap column
         rowEl.append(colEl);
         i2++;
     }
