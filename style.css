@@ -25,6 +25,11 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
 }
 
+#magic {
+    color: rgb(206, 11, 11);
+    width: 100%;
+}
+
 /* side nav bar  */
 .navbar {
     width: 5rem;
@@ -88,7 +93,9 @@ header {
     top: 38px;
     height: 10px;
 }
-
+.nav-icon:last-child{
+    margin-top: 73vh;
+}
 
 #search,#searchBtn {
     height: 40px;
