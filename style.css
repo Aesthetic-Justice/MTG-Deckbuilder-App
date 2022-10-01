@@ -25,6 +25,11 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
 }
 
+#magic {
+    color: rgb(206, 11, 11);
+    width: 100%;
+}
+
 /* side nav bar  */
 .navbar {
     width: 5rem;
@@ -88,7 +93,9 @@ header {
     top: 38px;
     height: 10px;
 }
-
+.nav-icon:last-child{
+    margin-top: 73vh;
+}
 
 #search,#searchBtn {
     height: 40px;
@@ -121,8 +128,8 @@ a #title{
 }
 
 #searchGrid{
-
-
+  background-color: black;  
+  border: .2rem solid black;
   height: 50rem;
   overflow-y: scroll;  
   
@@ -145,4 +152,14 @@ a #title{
 @media only screen and (min-width:600px) {}
 .cardImage{
     border-radius: 25px;
+    background-color: black;
+    margin-top: 20px;
+    
+}
+
+#cardContainer{
+   border: 5px solid black;
+   font-size: 20px;
+   font-weight: 900;
+    
 }

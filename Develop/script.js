@@ -15,13 +15,15 @@ let arrCardNames = [];//An array of all cards, containing; name, uri, and an ima
 let arrDeck = [];//The user's decklist
 
 //~~~~ Functions ~~~~~~~~~~~
-function getCardList() {//fetches the card data stored in trimmedList.json and stores it in RAM
+function pullCard(cardName) {
+}
+
+function getCardList() {
     fetch('Develop\\trimmedList.json')
         .then((response) => response.json())
         .then((json) => arrCardNames = json)
 }
 
-//Takes a API link to a specific card and displays it in the center of the page
 function displayCard(uri) {
     fetch(uri)
         .then(function (response) {
@@ -82,7 +84,6 @@ function createGrid(list) {
 getCardList();
 
 //~~~~ Event Listeners ~~~~
-//on Clicking the search button in the top right
 elSearchButton.addEventListener('click', function (event) {
     event.preventDefault();//Prevent reload page
     let searchTarget = document.getElementById('search').value.toLowerCase();//Grab search input
@@ -106,7 +107,6 @@ elSearchButton.addEventListener('click', function (event) {
     createGrid(results);//creates a grid of images based on the search results
 })
 
-//on clicking any card art in the search grid
 elSearchGrid.addEventListener('click', function (event) {
     if (event.target.dataset.uri != null) {
         displayCard(event.target.dataset.uri);
