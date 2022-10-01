@@ -115,7 +115,7 @@ elSearchGrid.addEventListener('click', function (event) {
 
 //if AddToDeck is clicked. Adds card + data to the NavBar
 elAddToDeck.addEventListener('click', function (event) {
-    //if 
+    event.preventDefault();
     if (displayArt.src != null) {
         cardData = JSON.parse(event.target.dataset.cardData);//Grab card data
         if (arrDeck.length == 0) {
@@ -134,13 +134,13 @@ elAddToDeck.addEventListener('click', function (event) {
             elDeckDisplay.append(elCard);
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
-            arrDeck[arrDeck.map(c=>c.name).indexOf(cardData.name)].count+=1;
-            console.log(`Adding Card.\nCardCount = `+arrDeck[arrDeck.map(c=>c.name).indexOf(cardData.name)].count);
+            arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count += 1;
+            console.log(`Adding Card.\nCardCount = ` + arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count);
         }
         else{
-                console.log(`Else or Too Many Cards`);
+            console.log(`Else or Too Many Cards`);
         }
         console.log(`the deck is:`);
         console.log(arrDeck);
-        }
-    })
+    }
+})
