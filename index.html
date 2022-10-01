@@ -67,7 +67,7 @@
                     <span class='link-text text-bg-dark'>DECK</span>
 
                 </a>
-
+                
             </li>
             <li class='nav-icon'>
                 <a href="https://mtgarena.downloads.wizards.com/Live/Windows64/MTGAInstaller.exe" class="nav-link"
@@ -96,9 +96,12 @@
                     <p id="cardText"></p>
                     <p id="cardPT"></p>
                 </div>
-                <div class="col ">
-                    <img class="cardImage row" id="cardImage" />
-                    <button class="btn btn-success btn-lg row  ">Add to Deck</button>
+                <div class="col">
+                    <img class="cardImage row" id="cardImage"/>
+                    <div class="row">
+                        <button class="btn btn-success invisible btn-lrg" id="btnAdd2Deck">Add to Deck</button>
+                        <button class="btn btn-danger invisible btn-lrg" id="btnRmv2Deck">Remove from Deck</button>
+                    </div>
                 </div>
                 <div class="col">
                     <section class="container-fluid" id="searchGrid">
