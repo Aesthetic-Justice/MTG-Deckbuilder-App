@@ -1,4 +1,3 @@
-
 main {
     margin-left: 5rem;
     padding: 1rem;
@@ -7,14 +6,17 @@ main {
 body {
     background-color: gray;
 }
+
 /* scroll bar width for webpage*/
 body::-webkit-scrollbar {
     width: 0.15rem;
 }
+
 /* scroll bar bg black for webpage*/
 body::-webkit-scrollbar-track {
     background: black;
 }
+
 /* scroll bar gold for webpage*/
 body::-webkit-scrollbar-thumb {
     background: gold;
@@ -37,7 +39,7 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     background-color: rgba(26, 26, 26, 0.906);
     transition: 200ms ease;
-    
+
 }
 
 .navbar-nav {
@@ -69,6 +71,7 @@ body::-webkit-scrollbar-thumb {
     min-width: 2rem;
     margin: 0 1.5rem;
 }
+
 /* hover for the navbar, width determines the how far it will cover page */
 .navbar:hover {
     width: 20rem;
@@ -77,6 +80,7 @@ body::-webkit-scrollbar-thumb {
 .navbar:hover .link-text {
     display: block;
 }
+
 /* removes previous grayscale of the nav bar icon */
 #nav-link:hover {
     filter: grayscale(0%) opacity(1);
@@ -88,32 +92,38 @@ header {
     width: 100vw;
 }
 
-.nav-item,#search,#searchBtn {
+.nav-item,
+#search,
+#searchBtn {
     position: relative;
+    left: 2rem;
     top: 2rem;
     height: 1rem;
 }
-.nav-icon:last-child{
+
+.nav-icon:last-child {
     margin-top: 73vh;
 }
 
-#search,#searchBtn {
+#search,
+#searchBtn {
     height: 2rem;
 }
 
 #searchBtn {
     font-size: .8em;
     line-height: 0em;
+    width: 5rem;
 
 }
 
-.gsc-control-cse{
-position: relative;
-top: 130px;
-border-radius: 2em;
-margin-left: 15rem;
-overflow-y: scroll;
-max-height: 43rem;
+.gsc-control-cse {
+    position: relative;
+    top: 130px;
+    border-radius: 2em;
+    margin-left: 15rem;
+    overflow-y: scroll;
+    max-height: 43rem;
 }
 
 .gsc-control-cse::-webkit-scrollbar {
@@ -129,7 +139,7 @@ max-height: 43rem;
 }
 
 
-#googleHeader{
+#googleHeader {
     position: absolute;
     top: 130px;
     margin-left: 15rem;
@@ -137,17 +147,17 @@ max-height: 43rem;
     width: 50vw;
 }
 
-a #title{
+a #title {
     color: rgb(206, 11, 11);
     transition: 600ms ease;
 }
 
-#searchGrid{
-  background-color: black;  
-  border: .2rem solid black;
-  height: 50rem;
-  overflow-y: scroll;  
-  
+#searchGrid {
+    background-color: black;
+    border: .2rem solid black;
+    height: 50rem;
+    overflow-y: scroll;
+
 }
 
 #searchGrid::-webkit-scrollbar {
@@ -162,65 +172,94 @@ a #title{
     background: gold;
 }
 
-#galleryGrid{
-    background-color: black;  
+#galleryGrid {
+    background-color: black;
     border: .2rem solid black;
     height: 50rem;
-    overflow-y: scroll;  
-    
-  }
-  
-  #galleryGrid::-webkit-scrollbar {
-      width: 0.15rem;
-  }
-  
-  #galleryGrid::-webkit-scrollbar-track {
-      background: black;
-  }
-  
-  #galleryGrid::-webkit-scrollbar-thumb {
-      background: gold;
-  }
+    overflow-y: scroll;
+
+}
+
+#galleryGrid::-webkit-scrollbar {
+    width: 0.15rem;
+}
+
+#galleryGrid::-webkit-scrollbar-track {
+    background: black;
+}
+
+#galleryGrid::-webkit-scrollbar-thumb {
+    background: gold;
+}
+.cardImage {
+    border-radius: 25px;
+    background-color: black;
+    margin-top: 20px;
+
+}
+
+#cardContainer {
+    border: 5px solid black;
+    font-size: 20px;
+    font-weight: 900;
+
+}
+
 @media only screen and (max-width:1107px) {
-    .nav-item,#search,#searchBtn {
+
+    .nav-item,
+    #search,
+    #searchBtn {
         position: relative;
         top: 2rem;
         height: 1rem;
     }
-    #search,#searchBtn {
+
+    #search,
+    #searchBtn {
         height: 2rem;
     }
+
     #search {
         width: 7rem;
     }
+
     #searchBtn {
         line-height: 0em;
         width: 3.rem;
         font-size: 11px;
         font-weight: bold;
-    
+
     }
-    
+
 }
+
 @media only screen and (max-width:998px) {
-    .nav-item,#search,#searchBtn {
+
+    .nav-item,
+    #search,
+    #searchBtn {
         position: relative;
         top: 2rem;
         height: 1rem;
-        padding:0px;
+        padding: 0px;
     }
-    #search,#searchBtn {
+
+    #search,
+    #searchBtn {
         height: 2rem;
     }
+
     #search {
         width: 7rem;
     }
+
     #searchBtn {
         line-height: 0em;
         width: 3rem;
         font-size: 11px;
         font-weight: bold;
-    
+
     }
 
     /* .nav-item {
@@ -230,66 +269,229 @@ a #title{
         
     }  */
 
-    
+
 }
+
 @media only screen and (max-width:985px) {
-    .nav-item,#search,#searchBtn {
+
+    .nav-item,
+    #search,
+    #searchBtn {
         position: relative;
         top: 2rem;
         height: 1rem;
-        padding-left:0px;
+        padding-left: 0px;
         padding-right: 0px;
     }
-    #search,#searchBtn {
+
+    #search,
+    #searchBtn {
         height: 2rem;
     }
+
     #search {
         width: 5rem;
     }
+
     #searchBtn {
         line-height: 0em;
         width: 3rem;
         font-size: 11px;
         font-weight: bold;
-    
+
     }
-    @media only screen and (max-width:950px) {
-        .nav-item,#search,#searchBtn {
-            position: relative;
-            left: -1rem;
-            top: 2rem;
-            height: 1rem;
-            padding-left:0px;
-            padding-right: 0px;
-        }
-        #search,#searchBtn {
-            height: 2rem;
-        }
-        #search {
-            width: 3rem;
-        }
-        #searchBtn {
-            line-height: 0em;
-            width: 3rem;
-            font-size: 11px;
-            font-weight: bold;
-        
-        }
-
-@media only screen and (min-width:600px) {
-
-    
-}
-.cardImage{
-    border-radius: 25px;
-    background-color: black;
-    margin-top: 20px;
-    
 }
 
-#cardContainer{
-   border: 5px solid black;
-   font-size: 20px;
-   font-weight: 900;
-    
+@media only screen and (max-width:950px) {
+
+    .nav-item,
+    #search,
+    #searchBtn {
+        position: relative;
+        top: 0rem;
+        height: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #search,
+    #searchBtn {
+        height: 2rem;
+    }
+
+    #search {
+        width: 7rem;
+    }
+
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+
+    }
 }
+@media only screen and (max-width:924px) {
+
+    .nav-item,
+    #search,
+    #searchBtn {
+        position: relative;
+        top: 0rem;
+        height: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #search,
+    #searchBtn {
+        height: 2rem;
+        position: relative;
+        top: 1rem;
+    }
+
+    #search {
+        width: 7rem;
+    }
+
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+
+    }
+}
+
+
+
+
+@media only screen and (max-width:767px) {
+
+    .nav-item,
+    #search,
+    #searchBtn {
+        position: relative;
+        left: 2rem;
+        top: 0rem;
+        height: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #search,
+    #searchBtn {
+        position:relative;
+        height: 2rem;
+    }
+
+    #search {
+        width: 7rem;
+    }
+
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+
+    }
+}
+@media only screen and (max-width:684px) {
+
+    .nav-item,
+    #search,
+    #searchBtn {
+        position: relative;
+        left: 2rem;
+        top: 0rem;
+        height: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #search,
+    #searchBtn {
+        position:relative;
+        height: 2rem;
+    }
+
+    #search {
+        width: 6rem;
+    }
+
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+
+    }
+}
+@media only screen and (max-width:669px) {
+
+    .nav-item,
+    #search,
+    #searchBtn {
+        position: relative;
+        left: 2rem;
+        top: 0rem;
+        height: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #search,
+    #searchBtn {
+        position:relative;
+        height: 2rem;
+    }
+
+    #search {
+        width: 4rem;
+    }
+
+    #searchBtn {
+        line-height: 0em;
+        width: 2rem;
+        font-size: 11px;
+        font-weight: bold;
+
+    }
+}
+@media only screen and (max-width:620px) {
+
+    .nav-item,
+    #search,
+    #searchBtn {
+        position: relative;
+        left: 2rem;
+        top: 1rem;
+        height: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    #search,
+    #searchBtn {
+        position:relative;
+        top: -3.3rem;
+        height: 2rem;
+    }
+
+    #search {
+        width: 7rem;
+    }
+
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+
+    }
+}
+
+
+    @media only screen and (min-width:600px) {}
+
