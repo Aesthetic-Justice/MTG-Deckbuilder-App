@@ -78,13 +78,13 @@ function createGrid(list) {
 }
 
 //Update tracker for the number of cards in deck
-function updateCardCount(){
-    cardCount=0;//Refresh cardcount
+function updateCardCount() {
+    cardCount = 0;//Refresh cardcount
 
-    for(let i of arrDeck){//for every card in the deck
+    for (let i of arrDeck) {//for every card in the deck
         cardCount += i.count;//add the number of that card in the deck to the total deck size
     }
-    console.log(`Deck size = `+cardCount);
+    console.log(`Deck size = ` + cardCount);
 }
 
 //~~~~ Run on Startup ~~~~
@@ -129,14 +129,7 @@ elAddToDeck.addEventListener('click', function (event) {
     event.preventDefault();
     if (displayArt.src != null) {
         cardData = JSON.parse(event.target.dataset.cardData);//Grab card data
-        if (arrDeck.length == 0) {
-            console.log(`Deck Empty`);
-            arrDeck[0] = ({ name: cardData.name, count: 1, art: cardData.image_uris });
-            elCard = document.createElement('img');
-            elCard.src = cardData.image_uris.small;
-            elDeckDisplay.append(elCard);
-        }
-        else if (arrDeck.filter(c => c.name.match(cardData.name))[0] == null) {
+        if (arrDeck.filter(c => c.name?.match(cardData.name))[0] == null) {
             console.log(`New Card`);
             arrDeck.push({ name: cardData.name, count: 1, art: cardData.image_uris });
             elCard = document.createElement('img');
@@ -147,7 +140,7 @@ elAddToDeck.addEventListener('click', function (event) {
             console.log(`Adding Card`);
             arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count += 1;
         }
-        else{
+        else {
             console.log(`Else or Too Many Cards`);
         }
         console.log(`the deck is:`);
