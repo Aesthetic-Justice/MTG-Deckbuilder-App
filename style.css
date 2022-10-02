@@ -170,18 +170,111 @@ a #title{
     
   }
   
-  #galleryhGrid::-webkit-scrollbar {
+  #galleryGrid::-webkit-scrollbar {
       width: 0.15rem;
   }
   
-  #galleryhGrid::-webkit-scrollbar-track {
+  #galleryGrid::-webkit-scrollbar-track {
       background: black;
   }
   
-  #galleryhGrid::-webkit-scrollbar-thumb {
+  #galleryGrid::-webkit-scrollbar-thumb {
       background: gold;
   }
-@media only screen and (max-width:600px) {}
+@media only screen and (max-width:1107px) {
+    .nav-item,#search,#searchBtn {
+        position: relative;
+        top: 2rem;
+        height: 1rem;
+    }
+    #search,#searchBtn {
+        height: 2rem;
+    }
+    #search {
+        width: 7rem;
+    }
+    #searchBtn {
+        line-height: 0em;
+        width: 3.rem;
+        font-size: 11px;
+        font-weight: bold;
+    
+    }
+    
+}
+@media only screen and (max-width:998px) {
+    .nav-item,#search,#searchBtn {
+        position: relative;
+        top: 2rem;
+        height: 1rem;
+        padding:0px;
+    }
+    #search,#searchBtn {
+        height: 2rem;
+    }
+    #search {
+        width: 7rem;
+    }
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+    
+    }
+
+    /* .nav-item {
+        position:relative;
+        left:1rem;
+        
+        
+    }  */
+
+    
+}
+@media only screen and (max-width:985px) {
+    .nav-item,#search,#searchBtn {
+        position: relative;
+        top: 2rem;
+        height: 1rem;
+        padding-left:0px;
+        padding-right: 0px;
+    }
+    #search,#searchBtn {
+        height: 2rem;
+    }
+    #search {
+        width: 5rem;
+    }
+    #searchBtn {
+        line-height: 0em;
+        width: 3rem;
+        font-size: 11px;
+        font-weight: bold;
+    
+    }
+    @media only screen and (max-width:950px) {
+        .nav-item,#search,#searchBtn {
+            position: relative;
+            left: -1rem;
+            top: 2rem;
+            height: 1rem;
+            padding-left:0px;
+            padding-right: 0px;
+        }
+        #search,#searchBtn {
+            height: 2rem;
+        }
+        #search {
+            width: 3rem;
+        }
+        #searchBtn {
+            line-height: 0em;
+            width: 3rem;
+            font-size: 11px;
+            font-weight: bold;
+        
+        }
 
 @media only screen and (min-width:600px) {
 
