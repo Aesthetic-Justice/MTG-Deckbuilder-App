@@ -9,10 +9,12 @@ let elSearchButton = document.getElementById('searchBtn');//Search button in the
 let elSearchGrid = document.getElementById('searchGrid');//Grid on the right side which displays cards
 let elAddToDeck = document.getElementById('btnAdd2Deck');//AddToDeck button
 let elRemoveFromDeck = document.getElementById(`btnRmv2Deck`);//Remove from Deck button
+let elSaveToDeck = document.getElementById(`btnSave2Deck`);//Save Deck to LocalStorage button
 let elDeckDisplay = document.getElementsByClassName('navbar-nav')[0];//NavBar on the left
 
 let arrCardNames = [];//An array of all cards, containing; name, uri, and an image_uri array;
 let arrDeck = [];//The user's decklist
+let cardCount = 0;//Total number of cards in deck
 
 //~~~~ Functions ~~~~~~~~~~~
 function getCardList() {//fetches the card data stored in trimmedList.json and stores it in RAM
@@ -38,12 +40,14 @@ function displayCard(uri) {
             //Store the results of the API call within the AddToDeck button, for later use
             elAddToDeck.dataset.cardData = JSON.stringify(data);
 
-            //if the AddToDeck button isn't visible, make it visible
+            //if the AddToDeck button isn't visible, those buttons visible
             if (elAddToDeck.classList[2] == 'invisible') {
                 elAddToDeck.classList.remove('invisible');
                 elAddToDeck.classList.add('visible');
                 elRemoveFromDeck.classList.remove('invisible');
                 elRemoveFromDeck.classList.add('visible');
+                elSaveToDeck.classList.remove('invisible');
+                elSaveToDeck.classList.add('visible');
             }
         })
 }
@@ -76,6 +80,16 @@ function createGrid(list) {
     }
 }
 
+//Update tracker for the number of cards in deck
+function updateCardCount() {
+    cardCount = 0;//Refresh cardcount
+
+    for (let i of arrDeck) {//for every card in the deck
+        cardCount += i.count;//add the number of that card in the deck to the total deck size
+    }
+    console.log(`Deck size = ` + cardCount);
+}
+
 //~~~~ Run on Startup ~~~~
 getCardList();
 
@@ -86,7 +100,8 @@ elSearchButton.addEventListener('click', function (event) {
     let searchTarget = document.getElementById('search').value.toLowerCase();//Grab search input
     let results = [];//create empty array, to be filled with cardObjects
 
-    //This bundle of code does a server-side AutoComplete
+    //This bundle of code does a server-side AutoComplete. 
+    //Its commented out because I got previously timed out while testing it, but it works perfectly
     /*fetch(`https://api.scryfall.com/cards/autocomplete?q=`+searchTarget)
     .then(function(response){
         return response.json();
@@ -98,6 +113,7 @@ elSearchButton.addEventListener('click', function (event) {
             }
         }
         displayCard(results);//then call createGrid to fill the search Grid with the resulting cardObjects
+        return;
     }) */
 
     results = arrCardNames.filter(c => c.name?.toLowerCase().includes(searchTarget));//compares the value of the search input against the arr of cardNames and returns matches
@@ -111,34 +127,61 @@ elSearchGrid.addEventListener('click', function (event) {
     }
 })
 
-//if AddToDeck is clicked. Adds card + data to the NavBar
+//Add selected card to deck function
 elAddToDeck.addEventListener('click', function (event) {
     event.preventDefault();
     if (displayArt.src != null) {
         cardData = JSON.parse(event.target.dataset.cardData);//Grab card data
-        if (arrDeck.length == 0) {
-            console.log(`Deck Empty`);
-            arrDeck[0] = ({ name: cardData.name, count: 1, art: cardData.image_uris });
-            elCard = document.createElement('img');
-            elCard.src = cardData.image_uris.small;
-            elDeckDisplay.append(elCard);
-            return;
-        }
-        if (arrDeck.filter(c => c.name.match(cardData.name))[0] == null) {
+        if (arrDeck.filter(c => c.name?.match(cardData.name))[0] == null) {
             console.log(`New Card`);
             arrDeck.push({ name: cardData.name, count: 1, art: cardData.image_uris });
             elCard = document.createElement('img');
             elCard.src = cardData.image_uris.small;
-            elDeckDisplay.append(elCard);
+            elDeckDisplay.insertBefore(elCard,elDeckDisplay.lastChild.previousSibling);
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
+            console.log(cardData.name+` count increased by 1.`);
             arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count += 1;
-            console.log(`Adding Card.\nCardCount = ` + arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count);
         }
-        else{
+        else {
             console.log(`Else or Too Many Cards`);
         }
         console.log(`the deck is:`);
         console.log(arrDeck);
+        updateCardCount();
     }
+})
+
+//Remove selected card from deck
+elRemoveFromDeck.addEventListener(`click`, function (event) {
+    event.preventDefault();
+    if (arrDeck.length == 0) {//Guard Clause for empty deck
+        console.log(`ERROR: Empty Deck!`)
+        return;
+    }
+
+    cardData = JSON.parse(elAddToDeck.dataset.cardData);//Grab card data
+
+    //If there are multiples of the selected card in the deck
+    if (arrDeck.filter(c => c.name.match(cardData.name))[0].count > 1) {
+        //reduce cardcount by 1
+        console.log(cardData.name+` count reduced by 1.`);
+        arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count -= 1;
+    }
+    
+    //If there is only 1 copy of the card, delete the selected card from the deck
+    else if(arrDeck.filter(c => c.name.match(cardData.name))[0].count === 1){
+        console.log(cardData.name+` removed from deck.`);
+        elDeckDisplay.removeChild(elDeckDisplay.children[1+(arrDeck.map(c => c.name).indexOf(cardData.name))]);
+        arrDeck.splice(arrDeck.map(c => c.name).indexOf(cardData.name),1);//Remove entry from deck
+    }
+
+    console.log(`the deck is:`);
+    console.log(arrDeck);
+    updateCardCount();
+})
+
+//Save curent deck to LocalStorage
+elSaveToDeck.addEventListener(`click`, function(event){
+    event.preventDefault();
 })
