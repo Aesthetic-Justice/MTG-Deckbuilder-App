@@ -13,31 +13,33 @@
     <link rel="stylesheet" href="reset.css" />
 
     <script async src="https://cse.google.com/cse.js?cx=1739807d4cdf547c1"></script>
-    <title> CARDMAGIC </title>
+    <title>CARDMAGIC</title>
 </head>
 
 <body>
     <header class="topbar navbar-dark bg-dark">
         <nav class="nav navbar-dark bg-dark ">
             <div class="container-fluid row align-items-end">
-                <div class="col-lg-6">
+                <div class="col-md-auto">
                     <a class="navbar-brand text-bg-dark fs-1 fw-bold" href=index.html>CARDMAGIC</a>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md">
                     <ul class='nav justify-content-end d-flex align-items-baseline '>
+                        <li class='nav-item'>
+                            <a class='nav-link text-bg-dark fs-5 ' href="google.html"> Search Magic</a>
+                        </li>
                         <li class='nav-item'>
                             <a class='nav-link text-bg-dark fs-5 ' href="index.html"> Deckbuilder</a>
                         </li>
                         <li class='nav-item'>
-                            <a class='nav-link text-bg-dark  fs-5 ' href="cards.html">Cards</a>
+                            <a class='nav-link text-bg-dark fs-5 '
+                                href="https://magic.wizards.com/en/how-to-play">Strategy</a>
                         </li>
                         <li class='nav-item'>
-                            <a class='nav-link text-bg-dark fs-5 ' href="https://magic.wizards.com/en/how-to-play">Strategy</a>
+                            <a class='nav-link text-bg-dark fs-5 '
+                                href="https://www.youtube.com/user/wizardsmtg">Videos</a>
                         </li>
-                        <li class='nav-item'>
-                            <a class='nav-link text-bg-dark fs-5 ' href="https://www.youtube.com/user/wizardsmtg">Videos</a>
-                        </li>
-                        
+
                         <form class="d-flex" role="search">
                             <input id="search" class="form-control me-2" type="search" placeholder="Search Cards"
                                 aria-label="Search">
@@ -65,7 +67,7 @@
                     <span class='link-text text-bg-dark'>DECK</span>
 
                 </a>
-
+                
             </li>
             <li class='nav-icon'>
                 <a href="https://mtgarena.downloads.wizards.com/Live/Windows64/MTGAInstaller.exe" class="nav-link"
@@ -81,19 +83,19 @@
                     <span class='link-text text-bg-dark'>DOWNLOAD MTG ARENA</span>
                 </a>
             </li>
-
         </ul>
 
     </nav>
     <main>
-        <h1 id="googleHeader" class="display-1 fw-bolder position-absolute top-00 start-50 translate-middle float-lg-start ">GOOGLE MAGIC</h1> 
-          
-        <div id =googleSearch class="gcse-search"></div>
-
-
-
-
+        <section class="container-fluid">
+            <article class="row">
+                <div class="col">
+                    <section class="container-fluid" id="galleryGrid">
+                    </section>
+                </div>
+            </article>
+        </section>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <script src="./Develop/script.js"></script>
 </body>

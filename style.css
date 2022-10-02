@@ -112,7 +112,22 @@ position: relative;
 top: 130px;
 border-radius: 2em;
 margin-left: 15rem;
+overflow-y: scroll;
+max-height: 43rem;
 }
+
+.gsc-control-cse::-webkit-scrollbar {
+    width: 0.15rem;
+}
+
+.gsc-control-cse::-webkit-scrollbar-track {
+    background: black;
+}
+
+.gsc-control-cse::-webkit-scrollbar-thumb {
+    background: gold;
+}
+
 
 #googleHeader{
     position: absolute;
@@ -147,6 +162,25 @@ a #title{
     background: gold;
 }
 
+#galleryGrid{
+    background-color: black;  
+    border: .2rem solid black;
+    height: 50rem;
+    overflow-y: scroll;  
+    
+  }
+  
+  #galleryhGrid::-webkit-scrollbar {
+      width: 0.15rem;
+  }
+  
+  #galleryhGrid::-webkit-scrollbar-track {
+      background: black;
+  }
+  
+  #galleryhGrid::-webkit-scrollbar-thumb {
+      background: gold;
+  }
 @media only screen and (max-width:600px) {}
 
 @media only screen and (min-width:600px) {}
