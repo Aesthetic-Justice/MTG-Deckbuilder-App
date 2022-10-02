@@ -137,7 +137,7 @@ elAddToDeck.addEventListener('click', function (event) {
             elDeckDisplay.append(elCard);
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
-            console.log(`Adding Card`);
+            console.log(cardData.name+` count increased by 1.`);
             arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count += 1;
         }
         else {
@@ -147,4 +147,25 @@ elAddToDeck.addEventListener('click', function (event) {
         console.log(arrDeck);
         updateCardCount();
     }
+})
+
+elRemoveFromDeck.addEventListener(`click`, function (event) {
+    event.preventDefault();
+    if (arrDeck.length == 0) {//Guard Clause for empty deck
+        console.log(`ERROR: Empty Deck!`)
+        return;
+    }
+
+    cardData = JSON.parse(elAddToDeck.dataset.cardData);//Grab card data
+
+    //If there are multiples of the selected card in the deck
+    if (arrDeck.filter(c => c.name.match(cardData.name))[0].count > 1) {
+        //reduce cardcount by 1
+        console.log(cardData.name+` count reduced by 1.`);
+        arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count -= 1;
+    }
+
+    console.log(`the deck is:`);
+    console.log(arrDeck);
+    updateCardCount();
 })
