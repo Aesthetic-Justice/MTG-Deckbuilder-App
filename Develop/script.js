@@ -9,6 +9,7 @@ let elSearchButton = document.getElementById('searchBtn');//Search button in the
 let elSearchGrid = document.getElementById('searchGrid');//Grid on the right side which displays cards
 let elAddToDeck = document.getElementById('btnAdd2Deck');//AddToDeck button
 let elRemoveFromDeck = document.getElementById(`btnRmv2Deck`);//Remove from Deck button
+let elSaveToDeck = document.getElementById(`btnSave2Deck`);//Save Deck to LocalStorage button
 let elDeckDisplay = document.getElementsByClassName('navbar-nav')[0];//NavBar on the left
 
 let arrCardNames = [];//An array of all cards, containing; name, uri, and an image_uri array;
@@ -39,12 +40,14 @@ function displayCard(uri) {
             //Store the results of the API call within the AddToDeck button, for later use
             elAddToDeck.dataset.cardData = JSON.stringify(data);
 
-            //if the AddToDeck button isn't visible, make it visible
+            //if the AddToDeck button isn't visible, those buttons visible
             if (elAddToDeck.classList[2] == 'invisible') {
                 elAddToDeck.classList.remove('invisible');
                 elAddToDeck.classList.add('visible');
                 elRemoveFromDeck.classList.remove('invisible');
                 elRemoveFromDeck.classList.add('visible');
+                elSaveToDeck.classList.remove('invisible');
+                elSaveToDeck.classList.add('visible');
             }
         })
 }
@@ -124,7 +127,7 @@ elSearchGrid.addEventListener('click', function (event) {
     }
 })
 
-//if AddToDeck is clicked. Adds card + data to the NavBar
+//Add selected card to deck function
 elAddToDeck.addEventListener('click', function (event) {
     event.preventDefault();
     if (displayArt.src != null) {
@@ -134,7 +137,7 @@ elAddToDeck.addEventListener('click', function (event) {
             arrDeck.push({ name: cardData.name, count: 1, art: cardData.image_uris });
             elCard = document.createElement('img');
             elCard.src = cardData.image_uris.small;
-            elDeckDisplay.append(elCard);
+            elDeckDisplay.insertBefore(elCard,elDeckDisplay.lastChild.previousSibling);
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
             console.log(cardData.name+` count increased by 1.`);
@@ -149,6 +152,7 @@ elAddToDeck.addEventListener('click', function (event) {
     }
 })
 
+//Remove selected card from deck
 elRemoveFromDeck.addEventListener(`click`, function (event) {
     event.preventDefault();
     if (arrDeck.length == 0) {//Guard Clause for empty deck
@@ -164,8 +168,20 @@ elRemoveFromDeck.addEventListener(`click`, function (event) {
         console.log(cardData.name+` count reduced by 1.`);
         arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count -= 1;
     }
+    
+    //If there is only 1 copy of the card, delete the selected card from the deck
+    else if(arrDeck.filter(c => c.name.match(cardData.name))[0].count === 1){
+        console.log(cardData.name+` removed from deck.`);
+        elDeckDisplay.removeChild(elDeckDisplay.children[1+(arrDeck.map(c => c.name).indexOf(cardData.name))]);
+        arrDeck.splice(arrDeck.map(c => c.name).indexOf(cardData.name),1);//Remove entry from deck
+    }
 
     console.log(`the deck is:`);
     console.log(arrDeck);
     updateCardCount();
+})
+
+//Save curent deck to LocalStorage
+elSaveToDeck.addEventListener(`click`, function(event){
+    event.preventDefault();
 })
