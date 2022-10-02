@@ -7,15 +7,15 @@ main {
 body {
     background-color: gray;
 }
-
+/* scroll bar width for webpage*/
 body::-webkit-scrollbar {
     width: 0.15rem;
 }
-
+/* scroll bar bg black for webpage*/
 body::-webkit-scrollbar-track {
     background: black;
 }
-
+/* scroll bar gold for webpage*/
 body::-webkit-scrollbar-thumb {
     background: gold;
 }
@@ -33,8 +33,8 @@ body::-webkit-scrollbar-thumb {
 /* side nav bar  */
 .navbar {
     width: 5rem;
-    height: 100vh;
-    position: fixed;
+    height: 91.4vh;
+    position: absolute;
     background-color: rgba(26, 26, 26, 0.906);
     transition: 200ms ease;
     
@@ -90,15 +90,15 @@ header {
 
 .nav-item,#search,#searchBtn {
     position: relative;
-    top: 38px;
-    height: 10px;
+    top: 2rem;
+    height: 1rem;
 }
 .nav-icon:last-child{
     margin-top: 73vh;
 }
 
 #search,#searchBtn {
-    height: 40px;
+    height: 2rem;
 }
 
 #searchBtn {
@@ -183,7 +183,10 @@ a #title{
   }
 @media only screen and (max-width:600px) {}
 
-@media only screen and (min-width:600px) {}
+@media only screen and (min-width:600px) {
+
+    
+}
 .cardImage{
     border-radius: 25px;
     background-color: black;
