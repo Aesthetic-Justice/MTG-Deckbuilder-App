@@ -10,7 +10,6 @@ let elSearchGrid = document.getElementById('searchGrid');//Grid on the right sid
 let elAddToDeck = document.getElementById('btnAdd2Deck');//AddToDeck button
 let elRemoveFromDeck = document.getElementById(`btnRmv2Deck`);//Remove from Deck button
 let elDeckDisplay = document.getElementsByClassName('navbar-nav')[0];//NavBar on the left
-let elGalleryGrid = document.getElementById('searchGrid');
 
 let arrCardNames = [];//An array of all cards, containing; name, uri, and an image_uri array;
 let arrDeck = [];//The user's decklist
@@ -38,8 +37,6 @@ function displayCard(uri) {
 
             //Store the results of the API call within the AddToDeck button, for later use
             elAddToDeck.dataset.cardData = JSON.stringify(data);
-
-            console.log(elAddToDeck.classList);
 
             //if the AddToDeck button isn't visible, make it visible
             if (elAddToDeck.classList[2] == 'invisible') {
