@@ -1,6 +1,7 @@
 main {
     margin-left: 5rem;
     padding: 1rem;
+    z-index: 1;
 }
 
 body {
@@ -33,6 +34,10 @@ body::-webkit-scrollbar-thumb {
     color: rgb(206, 11, 11);
     width: 100%;
 
+}
+#bgImage{
+    font-size: 100px;
+    z-index: 2;
 }
 
 /* side nav bar  */
@@ -147,11 +152,11 @@ header {
     width: 50vw;
 }
 
-a #title {
+div a #title:hover {
     color: rgb(206, 11, 11);
     transition: 600ms ease;
 }
-
+/* search grid */
 #searchGrid {
     background-color: black;
     border: .2rem solid black;
@@ -159,19 +164,19 @@ a #title {
     overflow-y: scroll;
 
 }
-
+/* search grid scroll bar width */
 #searchGrid::-webkit-scrollbar {
     width: 0.15rem;
 }
-
+/* search gridscroll bar background color */
 #searchGrid::-webkit-scrollbar-track {
     background: black;
 }
-
+/* search grid scroll bar color gold */
 #searchGrid::-webkit-scrollbar-thumb {
     background: gold;
 }
-
+/* galley grid */
 #galleryGrid {
     background-color: black;
     border: .2rem solid black;
@@ -179,40 +184,43 @@ a #title {
     overflow-y: scroll;
 
 }
-
+/* gallery scroll bar width */
 #galleryGrid::-webkit-scrollbar {
     width: 0.15rem;
 }
-
+/* gallery scroll bar background color */
 #galleryGrid::-webkit-scrollbar-track {
     background: black;
 }
-
+/* gallery scroll bar color gold */
 #galleryGrid::-webkit-scrollbar-thumb {
     background: gold;
 }
 
+/* card image */
 .cardImage {
     border-radius: 25px;
     background-color: black;
     margin-top: 20px;
 
 }
-
+/* card info section */
 #cardContainer {
     border: 5px solid black;
     font-size: 20px;
     font-weight: 900;
 
 }
-
+/* card image in left nav bar */
 ul img {
-    max-width: 5rem;   
+    max-width: 5rem;
+    border-radius: 5px;  
 }
 /* zoom image of card in nav bar */
 ul img:hover {
    transform: scale(4);
    z-index: 1;
+   border-radius: 5px;
 }
 
 @media only screen and (max-width:1107px) {

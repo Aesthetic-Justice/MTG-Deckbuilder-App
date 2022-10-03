@@ -136,7 +136,7 @@ elAddToDeck.addEventListener('click', function (event) {
             console.log(`New Card`);
             arrDeck.push({ name: cardData.name, count: 1, art: cardData.image_uris });
             elCard = document.createElement('img');
-            elCard.src = cardData.image_uris.small;
+            elCard.src = cardData.image_uris.large;
             elDeckDisplay.insertBefore(elCard,elDeckDisplay.lastChild.previousSibling);
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
