@@ -59,6 +59,20 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+/* search grid scroll bar width */
+.navbar-nav::-webkit-scrollbar {
+    width: 0.15rem;
+}
+/* search gridscroll bar background color */
+.navbar-nav::-webkit-scrollbar-track {
+    background: black;
+}
+/* search grid scroll bar color gold */
+.navbar-nav::-webkit-scrollbar-thumb {
+    background: silver;
 }
 
 #nav-link {
