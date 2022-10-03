@@ -6,6 +6,7 @@ main {
 
 body {
     background-color: gray;
+    overflow-x: hidden;
 }
 
 /* scroll bar width for webpage*/
@@ -43,7 +44,7 @@ body::-webkit-scrollbar-thumb {
 /* side nav bar  */
 .navbar {
     width: 5rem;
-    height: 91.4vh;
+    height: 52rem;
     position: absolute;
     background-color: rgba(26, 26, 26, 0.906);
     transition: 200ms ease;
