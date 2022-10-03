@@ -106,7 +106,7 @@ function addCardToNavbar(cardObject){
     elCardContainer.classList.add(`nav-link`);
 
     elCardArt = document.createElement('img');//create a blank image element
-    elCardArt.setAttribute(`width`,`80rem`);//set appropriate attributes
+    elCardArt.setAttribute(`width`,`70rem`);//set appropriate attributes
     elCardArt.setAttribute(`height`,`100rem`);
     elCardArt.setAttribute(`viewBox`,`0,0,700,700`);
     elCardArt.src = cardObject.art.large;//set the image
