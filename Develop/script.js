@@ -1,4 +1,4 @@
-//~~~~ Global variables ~~~~
+//~~~~ Global variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 let displayArt = document.getElementById('cardImage'); //Refers to the display columns in the middle and left of page
 let displayName = document.getElementById('cardImage');
 let displayType = document.getElementById('cardType');
@@ -16,7 +16,7 @@ let arrCardNames = [];//An array of all cards, containing; name, uri, and an ima
 let arrDeck = [];//The user's decklist
 let cardCount = 0;//Total number of cards in deck
 
-//~~~~ Functions ~~~~~~~~~~~
+//~~~~ General Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getCardList() {//fetches the card data stored in trimmedList.json and stores it in RAM
     fetch('Develop\\trimmedList.json')
         .then((response) => response.json())
@@ -84,14 +84,44 @@ function createGrid(list) {
     }
 }
 
+
+//~~~~ NavBar related functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 //Update tracker for the number of cards in deck
 function updateCardCount() {
     cardCount = 0;//Refresh cardcount
+    let x=1;//
 
     for (let i of arrDeck) {//for every card in the deck
         cardCount += i.count;//add the number of that card in the deck to the total deck size
+        elDeckDisplay.children[x].children[1].textContent=i.count;//Update NavBar count
+        x++;
     }
+
     console.log(`Deck size = ` + cardCount);
+}
+//takes in a card and adds it to the NavBar
+function addCardToNavbar(cardObject){
+    elCardContainer = document.createElement(`li`);//create a container
+    elCardContainer.classList.add(`nav-link`);
+
+    elCardArt = document.createElement('img');//create a blank image element
+    elCardArt.setAttribute(`width`,`80rem`);//set appropriate attributes
+    elCardArt.setAttribute(`height`,`100rem`);
+    elCardArt.setAttribute(`viewBox`,`0,0,700,700`);
+    elCardArt.src = cardObject.art.large;//set the image
+    
+    elCardCount = document.createElement(`span`);//create a visual indicator for the number of this card in deck
+    elCardCount.classList.add(`link-text`,`text-bg-dark`);
+    elCardCount.textContent = cardObject.count;//set the value
+    
+    elCardContainer.append(elCardArt,elCardCount);//Add elements to container
+    elDeckDisplay.insertBefore(elCardContainer, elDeckDisplay.lastChild.previousSibling);//Add container to NavBar
+}
+
+//Takes in a card, and removes the object from the corresponding slot in the navbar
+function removeCardFromNavbar(cardObject){
+    elDeckDisplay.removeChild(elDeckDisplay.children[1 + (arrDeck.map(c => c.name).indexOf(cardObject.name))]);
 }
 
 //Load deck from LocalStorage and push to NavBar
@@ -104,17 +134,15 @@ function loadDeck() {
         } while (elDeckDisplay.children.length > 2);
     }
     for (let i of arrDeck) {//For every card in the deck
-        elCard = document.createElement('img');//create a blank image element
-        elCard.src = i.art.large;//set the image
-        elDeckDisplay.insertBefore(elCard, elDeckDisplay.lastChild.previousSibling);
+        addCardToNavbar(i);
     }
 }
 
-//~~~~ Run on Startup ~~~~
+//~~~~ Run on Startup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 getCardList();
 loadDeck();
 
-//~~~~ Event Listeners ~~~~
+//~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //Clicking the search button populates the search grid with relevant entries
 elSearchButton.addEventListener('click', function (event) {
     event.preventDefault();//Prevent reload page
@@ -156,9 +184,7 @@ elAddToDeck.addEventListener('click', function (event) {
         if (arrDeck.filter(c => c.name?.match(cardData.name))[0] == null) {
             console.log(`New Card`);
             arrDeck.push({ name: cardData.name, count: 1, art: cardData.image_uris });
-            elCard = document.createElement('img');
-            elCard.src = cardData.image_uris.large;
-            elDeckDisplay.insertBefore(elCard, elDeckDisplay.lastChild.previousSibling);
+            addCardToNavbar(arrDeck.at(-1));
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
             console.log(cardData.name + ` count increased by 1.`);
@@ -177,11 +203,16 @@ elAddToDeck.addEventListener('click', function (event) {
 elRemoveFromDeck.addEventListener(`click`, function (event) {
     event.preventDefault();
     if (arrDeck.length == 0) {//Guard Clause for empty deck
-        console.log(`ERROR: Empty Deck!`)
+        console.log(`ERROR: Empty Deck!`);
         return;
     }
 
     cardData = JSON.parse(elAddToDeck.dataset.cardData);//Grab card data
+
+    if(arrDeck.filter(c => c.name.match(cardData.name)).length<1){
+        console.log(`ERROR: Card not in Deck!`);
+        return;
+    }
 
     //If there are multiples of the selected card in the deck
     if (arrDeck.filter(c => c.name.match(cardData.name))[0].count > 1) {
@@ -193,7 +224,7 @@ elRemoveFromDeck.addEventListener(`click`, function (event) {
     //If there is only 1 copy of the card, delete the selected card from the deck
     else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count === 1) {
         console.log(cardData.name + ` removed from deck.`);
-        elDeckDisplay.removeChild(elDeckDisplay.children[1 + (arrDeck.map(c => c.name).indexOf(cardData.name))]);
+        removeCardFromNavbar(arrDeck.filter(c => c.name.match(cardData.name))[0]);
         arrDeck.splice(arrDeck.map(c => c.name).indexOf(cardData.name), 1);//Remove entry from deck
     }
 
