@@ -90,11 +90,28 @@ function updateCardCount() {
     console.log(`Deck size = ` + cardCount);
 }
 
+//Load deck from LocalStorage and push to NavBar
+function loadDeck() {
+    if (localStorage.getItem(`Deck`) === null) { return; }//Guard Clause; if there is no saved deck, exit
+    arrDeck = JSON.parse(localStorage.getItem(`Deck`));//Load deck from LocalStorage to RAM
+    if (elDeckDisplay.children.length > 2) {//If there are cards currently in the NavBar...
+        do {
+            elDeckDisplay.removeChild(lastChild.previousSibling);//Remove them(Leaving only the icons,first and last children)
+        } while (elDeckDisplay.children.length > 2);
+    }
+    for (let i of arrDeck) {//For every card in the deck
+        elCard = document.createElement('img');//create a blank image element
+        elCard.src = i.art.large;//set the image
+        elDeckDisplay.insertBefore(elCard, elDeckDisplay.lastChild.previousSibling);
+    }
+}
+
 //~~~~ Run on Startup ~~~~
 getCardList();
+loadDeck();
 
 //~~~~ Event Listeners ~~~~
-//on Clicking the search button in the top right
+//Clicking the search button populates the search grid with relevant entries
 elSearchButton.addEventListener('click', function (event) {
     event.preventDefault();//Prevent reload page
     let searchTarget = document.getElementById('search').value.toLowerCase();//Grab search input
@@ -120,14 +137,14 @@ elSearchButton.addEventListener('click', function (event) {
     createGrid(results);//creates a grid of images based on the search results
 })
 
-//on clicking any card art in the search grid
+//Clicking a card in the search grid pushes it to the main display
 elSearchGrid.addEventListener('click', function (event) {
     if (event.target.dataset.uri != null) {
         displayCard(event.target.dataset.uri);
     }
 })
 
-//Add selected card to deck function
+//Clicking AddToDeck adds the card to the deck object and updates the NavBar respectively
 elAddToDeck.addEventListener('click', function (event) {
     event.preventDefault();
     if (displayArt.src != null) {
@@ -137,10 +154,10 @@ elAddToDeck.addEventListener('click', function (event) {
             arrDeck.push({ name: cardData.name, count: 1, art: cardData.image_uris });
             elCard = document.createElement('img');
             elCard.src = cardData.image_uris.large;
-            elDeckDisplay.insertBefore(elCard,elDeckDisplay.lastChild.previousSibling);
+            elDeckDisplay.insertBefore(elCard, elDeckDisplay.lastChild.previousSibling);
         }
         else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count < 4) {
-            console.log(cardData.name+` count increased by 1.`);
+            console.log(cardData.name + ` count increased by 1.`);
             arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count += 1;
         }
         else {
@@ -152,7 +169,7 @@ elAddToDeck.addEventListener('click', function (event) {
     }
 })
 
-//Remove selected card from deck
+//Clicking RemoveFromDeck removes one entry of the card from the deck and updates the NavBar respectively
 elRemoveFromDeck.addEventListener(`click`, function (event) {
     event.preventDefault();
     if (arrDeck.length == 0) {//Guard Clause for empty deck
@@ -165,15 +182,15 @@ elRemoveFromDeck.addEventListener(`click`, function (event) {
     //If there are multiples of the selected card in the deck
     if (arrDeck.filter(c => c.name.match(cardData.name))[0].count > 1) {
         //reduce cardcount by 1
-        console.log(cardData.name+` count reduced by 1.`);
+        console.log(cardData.name + ` count reduced by 1.`);
         arrDeck[arrDeck.map(c => c.name).indexOf(cardData.name)].count -= 1;
     }
-    
+
     //If there is only 1 copy of the card, delete the selected card from the deck
-    else if(arrDeck.filter(c => c.name.match(cardData.name))[0].count === 1){
-        console.log(cardData.name+` removed from deck.`);
-        elDeckDisplay.removeChild(elDeckDisplay.children[1+(arrDeck.map(c => c.name).indexOf(cardData.name))]);
-        arrDeck.splice(arrDeck.map(c => c.name).indexOf(cardData.name),1);//Remove entry from deck
+    else if (arrDeck.filter(c => c.name.match(cardData.name))[0].count === 1) {
+        console.log(cardData.name + ` removed from deck.`);
+        elDeckDisplay.removeChild(elDeckDisplay.children[1 + (arrDeck.map(c => c.name).indexOf(cardData.name))]);
+        arrDeck.splice(arrDeck.map(c => c.name).indexOf(cardData.name), 1);//Remove entry from deck
     }
 
     console.log(`the deck is:`);
@@ -181,7 +198,8 @@ elRemoveFromDeck.addEventListener(`click`, function (event) {
     updateCardCount();
 })
 
-//Save curent deck to LocalStorage
-elSaveToDeck.addEventListener(`click`, function(event){
+//Clicking SaveToDeck saves the curent deck to LocalStorage destructively
+elSaveToDeck.addEventListener(`click`, function (event) {
     event.preventDefault();
+    localStorage.setItem(`Deck`, JSON.stringify(arrDeck));
 })
