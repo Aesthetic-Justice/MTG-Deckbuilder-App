@@ -35,7 +35,11 @@ function displayCard(uri) {
             displayName.textContent = data.name;
             displayType.textContent = data.type_line;
             displayText.textContent = data.oracle_text;
-            displayPT.textContent = data.power + '/' + data.toughness;
+            if(data.power!=undefined){
+            displayPT.textContent = data.power + '/' + data.toughness;}
+            else{
+                displayPT.textContent = ``;
+            }
 
             //Store the results of the API call within the AddToDeck button, for later use
             elAddToDeck.dataset.cardData = JSON.stringify(data);
