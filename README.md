@@ -26,6 +26,20 @@ Add to Deck: Either introduce a new card to the deck, or increment the amount of
 Remove from Deck: Either remove a card entry completely, or decrement the amount of this specific card by 1.
 Save Deck: Save the currently displayed deck to LocalStorage destructively. This means that any previously saved deck will be overwritten. However, this also means that the most recent deck will be automatically loaded when the user returns to this page.
 
+Contained below is a gif, demonstrating the app in use.
+
+![alt text](Develop\unknown_2022.10.03-18.18_1.gif "Demonstrating Gif")
+
+The additional tabs contained in the top right corner are;
+- Search Magic:
+    An embeded google search API
+- Cards:
+    A display gallery of MTG cards
+- How-to-Play:
+    A link to a page hosted by Wizards on how to play Magic the Gathering
+- Videos:
+    A link to the official MTG Youtube page
+
 ## Credits
 
 All card art is property of Wizards of the Coast LLC, a subsidiary of Hasbro, Inc. All Rights Reserved, used with permission as per the [Wizards of the Coast Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy)
