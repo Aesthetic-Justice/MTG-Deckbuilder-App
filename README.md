@@ -44,7 +44,7 @@ The additional tabs contained in the top right corner are;
 
 All card art is property of Wizards of the Coast LLC, a subsidiary of Hasbro, Inc. All Rights Reserved, used with permission as per the [Wizards of the Coast Fan Content Policy](https://company.wizards.com/en/legal/fancontentpolicy)
 The API used to retrieve the card information is property of [Scryfall](https://scryfall.com/)
-Co-Created by Aesthetic-Justice and TRK
+Co-Created by Aesthetic-Justice and TRK41
 
 ## License
 
