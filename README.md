@@ -46,7 +46,7 @@ All card art is property of Wizards of the Coast LLC, a subsidiary of Hasbro, In
 
 The API used to retrieve the card information is property of [Scryfall](https://scryfall.com/)
 
-Co-Created by Aesthetic-Justice and TRK41
+Co-Created by [Aesthetic-Justice](https://github.com/Aesthetic-Justice) and [TRK41](https://github.com/TRK41)
 
 ## License
 
